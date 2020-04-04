@@ -8,7 +8,6 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const uri = process.env.DB_PATH;
-console.log("uri to show", uri);
 let client = new MongoClient(uri ,{useNewUrlParser:true})
 
 app.get('/products' , (req,res) => {
