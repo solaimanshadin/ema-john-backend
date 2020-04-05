@@ -8,7 +8,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const uri = process.env.DB_PATH;
-let client = new MongoClient(uri ,{useNewUrlParser:true})
+let  = new MongoClient(uri ,{useNewUrlParser:true})
 
 app.get('/products' , (req,res) => {
     client = new MongoClient(uri,{useNewUrlParser:true})
@@ -20,7 +20,9 @@ app.get('/products' , (req,res) => {
             }else{
                 res.send(documents);
             }
+            client.close();
         })
+
     })
 })
 app.get('/' , (req,res) => {
@@ -36,6 +38,8 @@ app.get('/product/:id', (req,res) => {
             }else{
                 res.send(documents[0]);
             }
+            client.close();
+
         })
     })
 })
@@ -52,6 +56,7 @@ app.post('/getProductsByKey', (req,res) => {
             }else{
                 res.send(documents);
             }
+            client.close();
         })
     })
 })
